@@ -1,7 +1,7 @@
 LIF Meanfield Tools
 ====================
 
-[Coverage Status](readme_figures/coverage.svg)
+<img src="https://github.com/moritzlayer/lif_meanfield_tools/blob/continuous_integration/readme_figures/coverage.svg">
 
 This Python package provides useful tools for analyzing neuronal networks
 consisting of leaky integrate-and-fire (LIF) neurons. These tools are based on
