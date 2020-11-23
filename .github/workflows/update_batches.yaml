@@ -19,6 +19,6 @@ jobs:
         $CONDA/bin/conda env update --file environment.yaml --name base
     - name: Run tests, create coverage report and update coverage badge
       run: |
-        $CONDA/bin/coverage --source=lif_meanfield_tools -m pytest
+        $CONDA/bin/coverage run --source=lif_meanfield_tools -m pytest
         $CONDA/bin/coverage report >> report.txt
         python .github_helpers/update_coverage_badge.py
