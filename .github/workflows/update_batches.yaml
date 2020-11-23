@@ -1,3 +1,5 @@
+name: Run Python Tests and Update Coverage Badge
+
 on:
   push:
     branches:
@@ -5,7 +7,7 @@ on:
       - continuous_integration
 
 jobs:
-  update_batches:
+  update_badges:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -19,6 +21,8 @@ jobs:
         $CONDA/bin/conda env update --file environment.yaml --name base
     - name: Run tests, create coverage report and update coverage badge
       run: |
-        $CONDA/bin/coverage run --source=lif_meanfield_tools -m pytest
+        # we need to make this line return true, otherwise github action will fail
+        # if any test fails and following commands will not be executed
+        $CONDA/bin/coverage run --source=lif_meanfield_tools -m pytest --tb=short || true
         $CONDA/bin/coverage report >> report.txt
         python .github_helpers/update_coverage_badge.py
