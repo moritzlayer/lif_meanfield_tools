@@ -25,4 +25,4 @@ jobs:
         # if any test fails and following commands will not be executed
         $CONDA/bin/coverage run --source=lif_meanfield_tools -m pytest --tb=short || true
         $CONDA/bin/coverage report >> report.txt
-        python .github_helpers/update_coverage_badge.py
+        $CONDA/bin/python .github_helpers/update_coverage_badge.py
