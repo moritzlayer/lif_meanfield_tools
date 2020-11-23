@@ -1,6 +1,8 @@
 LIF Meanfield Tools
 ====================
 
+[Coverage Status](readme_figures/coverage.svg)
+
 This Python package provides useful tools for analyzing neuronal networks
 consisting of leaky integrate-and-fire (LIF) neurons. These tools are based on
 mean-field theory of neuronal networks. That is why this package is called

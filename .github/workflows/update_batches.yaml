@@ -1,0 +1,24 @@
+on:
+  push:
+    branches:
+      - master
+      - continuous_integration
+
+jobs:
+  update_batches:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python 3.8
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.8
+    - name: Install dependencies
+      run: |
+        # $CONDA is an environment variable pointing to the root of the miniconda directory
+        $CONDA/bin/conda env update --file environment.yaml --name base
+    - name: Run tests, create coverage report and update coverage badge
+      run: |
+        $CONDA/bin/coverage --source=lif_meanfield_tools -m pytest
+        $CONDA/bin/coverage report >> report.txt
+        python .github_helpers/update_coverage_badge.py
