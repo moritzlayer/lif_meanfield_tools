@@ -32,4 +32,4 @@ jobs:
         commit_message: Update coverage badge
         branch: continuous_integration
         commit_options: '--no-verify --signoff'
-        file_pattern: *.svg
+        file_pattern: '*.svg'
