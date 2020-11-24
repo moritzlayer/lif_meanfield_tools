@@ -7,12 +7,14 @@ on:
       - continuous_integration
 
 jobs:
-  update_badges:
+  create_and_commit_badge:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
     - name: Set up Python 3.8
-      uses: actions/setup-python@v2
+      uses: |
+        actions/setup-python@v2
+        stefanzweifel/git-auto-commit-action@v4
       with:
         python-version: 3.8
     - name: Install dependencies
@@ -26,3 +28,8 @@ jobs:
         $CONDA/bin/coverage run --source=lif_meanfield_tools -m pytest --tb=short || true
         $CONDA/bin/coverage report >> report.txt
         $CONDA/bin/python .github_helpers/update_coverage_badge.py
+    - name: commit badge
+        commit_message: Update coverage badge
+        branch: continuous_integration
+        commit_options: '--no-verify --signoff'
+        file_pattern: *.svg
