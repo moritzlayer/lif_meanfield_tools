@@ -30,7 +30,7 @@ jobs:
     - name: commit badge
       uses: stefanzweifel/git-auto-commit-action@v4
       with:
-        - commit_message: Update coverage badge
-        - branch: continuous_integration
-        - commit_options: '--no-verify --signoff'
-        - file_pattern: *.svg
+        commit_message: Update coverage badge
+        branch: continuous_integration
+        commit_options: '--no-verify --signoff'
+        file_pattern: '*.svg'
