@@ -1,4 +1,4 @@
-name: Run Python Tests and Update Coverage Badge
+name: Update Coverage Badge
 
 on:
   push:
@@ -9,7 +9,6 @@ on:
 jobs:
   create_and_commit_badge:
     runs-on: ubuntu-latest
-    
     steps:
     - uses: actions/checkout@v2
     - name: Set up Python 3.8
@@ -30,7 +29,7 @@ jobs:
     - name: commit badge
       uses: stefanzweifel/git-auto-commit-action@v4
       with:
-        - commit_message: Update coverage badge
-        - branch: continuous_integration
-        - commit_options: '--no-verify --signoff'
-        - file_pattern: *.svg
+        commit_message: Update coverage badge
+        branch: continuous_integration
+        commit_options: '--no-verify --signoff'
+        file_pattern: *.svg
